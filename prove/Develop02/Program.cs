@@ -60,7 +60,7 @@ class Program
                 {
                     using (StreamWriter outputFile = new StreamWriter(fileName))
                     {
-                        outputFile.WriteLine($"\r\nDate:~|~{entry._date}~|~Prompt:~|~{entry._prompt}~|~Entry:~|~{entry._message}");
+                        outputFile.WriteLine($"Date:~|~{entry._date}~|~Prompt:~|~{entry._prompt}~|~Entry:~|~{entry._message}\r\n");
                     }
                 }
             }
