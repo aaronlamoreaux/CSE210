@@ -8,6 +8,6 @@ public class Entry {
     }
     
     public void Display() {
-        Console.WriteLine($"Date: {_date} Prompt: {_prompt} Entry: {_message}");
+        Console.WriteLine($"\r\nDate: {_date} Prompt: {_prompt} Entry: {_message}");
     }
 }

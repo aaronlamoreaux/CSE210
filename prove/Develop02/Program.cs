@@ -35,7 +35,7 @@ class Program
             else if (input == "3")
             {
                 
-                Console.WriteLine("what is your file name?");
+                Console.WriteLine("\r\nwhat is your file name?");
                 string fileName = Console.ReadLine();
 
                 string[] lines = System.IO.File.ReadAllLines(fileName);
@@ -53,14 +53,14 @@ class Program
             }
             else if (input == "4") 
             {
-                                Console.WriteLine("what is your file name?");
+                                Console.WriteLine("\r\nwhat is your file name?");
                 string fileName = Console.ReadLine();
 
                 foreach (Entry entry in journal._journal)
                 {
                     using (StreamWriter outputFile = new StreamWriter(fileName))
                     {
-                        outputFile.WriteLine($"Date:~|~{entry._date}~|~Prompt:~|~{entry._prompt}~|~Entry:~|~{entry._message}");
+                        outputFile.WriteLine($"\r\nDate:~|~{entry._date}~|~Prompt:~|~{entry._prompt}~|~Entry:~|~{entry._message}");
                     }
                 }
             }
@@ -70,14 +70,14 @@ class Program
             }
             else
             {
-                Console.WriteLine("not valid input. please enter '1', '2', '3', '4', or '5'.");
+                Console.WriteLine("\r\nnot valid input. please enter '1', '2', '3', '4', or '5'.");
             }
         }
     }
 
     static string Choice()
     {
-        Console.WriteLine("please select one of the following choices:");
+        Console.WriteLine("\r\nplease select one of the following choices:");
         Console.WriteLine("1. Write");
         Console.WriteLine("2. Display");
         Console.WriteLine("3. Load");
@@ -93,10 +93,10 @@ class Program
     {
         string prompt = "";
         List<string> prompts = new List<string>();
-        prompts.Add("What was the best thing that happened to you today?");
-        prompts.Add("What is something that made you laugh today?");
-        prompts.Add("Who made your day better today?");
-        prompts.Add("What is one thing you want to remember from today?");
+        prompts.Add("\r\nWhat was the best thing that happened to you today?");
+        prompts.Add("\r\nWhat is something that made you laugh today?");
+        prompts.Add("\r\nWho made your day better today?");
+        prompts.Add("\r\nWhat is one thing you want to remember from today?");
 
         Random random = new Random();
         int num = random.Next(0, 3);
