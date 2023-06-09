@@ -6,7 +6,6 @@ public class Acticity
     private string _congrats = "";
     private string _duration = "";
     private string _endMsg = "";
-    private DateTime _startTime = new DateTime();
     private DateTime _futureTime = new DateTime();
 
     public Acticity(string name, string description)
@@ -44,11 +43,6 @@ public class Acticity
         return _congrats;
     }
 
-    public DateTime GetStartTime()
-    {
-        return _startTime;
-    }
-
     public DateTime GetFutureTime(){
         return _futureTime;
     }
@@ -69,11 +63,6 @@ public class Acticity
     public void SetDuration(string duration)
     {
         _duration = duration;
-    }
-
-    public void SetStartime(DateTime startTime)
-    {
-        _startTime = startTime;
     }
 
     public void SetFutureTime(DateTime time){
@@ -102,29 +91,24 @@ public class Acticity
         }
     }
 
-    public DateTime Start()
+    public void Start()
     {
         SetStartMsg($"Welcome to the {GetName()} activity!");
         Console.Clear();
-        Console.WriteLine($"{GetStartMsg()}");
+        Console.WriteLine($"{GetStartMsg()}\n");
         Console.WriteLine($"{GetDescription()}");
 
         Console.Write("\nhow long, in seconds, would you like this activity to last? ");
         string duration = Console.ReadLine();
+
         SetDuration(duration);
+        SetFutureTime(DateTime.Now);
 
         Console.Clear();
 
         Console.WriteLine("Get Ready...");
         Loading();
-
-        Console.Clear();
-
-        SetStartime(DateTime.Now);
-        SetFutureTime(GetStartTime());
-        DateTime futureTime = GetFutureTime();
-
-        return futureTime;
+        Console.WriteLine("");
     }
 
     public void End()

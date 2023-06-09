@@ -2,7 +2,6 @@ public class ListingActivity : Acticity {
     private List<string> _prompts = new List<string>();   
     private Random _rdm = new Random();
     private int _prompt = 1;
-    private  DateTime _time = DateTime.Now;
     
     public ListingActivity() : base ("Listing","This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.")
     {
@@ -19,7 +18,7 @@ public class ListingActivity : Acticity {
         
         _prompt = _rdm.Next(0, _prompts.Count);
 
-        _time = Start();
+        Start();
 
         Console.WriteLine("List as many responses you can think of to the following _prompt:");
         Console.WriteLine($"\n---------- {_prompts[_prompt]} ----------\n");
@@ -27,7 +26,7 @@ public class ListingActivity : Acticity {
         Countdown(5);
         Console.WriteLine("");
 
-        while(DateTime.Now < _time)
+        while(DateTime.Now < GetFutureTime())
         {
             Console.Write("> ");
             Console.ReadLine();

@@ -7,8 +7,6 @@ public class ReflectionActivity : Acticity
     private int _prompt = 0;
     private string _input = "";
 
-    private DateTime _time = new DateTime();
-
     public ReflectionActivity() : base("Reflection", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.")
     {
 
@@ -32,7 +30,8 @@ public class ReflectionActivity : Acticity
     public void Act()
     {
         _prompt = _rdm.Next(0, _prompts.Count);
-        _time = Start();
+
+        Start();
 
         Console.WriteLine("Consider the following _prompt:");
 
@@ -41,12 +40,12 @@ public class ReflectionActivity : Acticity
         Console.WriteLine("when you have an experince in mind, press enter to continue.");
         _input = Console.ReadLine();
 
-        Console.Write("\nNow ponder on the following question as related to your chosen experince. You may begin in : ");
+        Console.Write("Now ponder on the following question as related to your chosen experince. You may begin in : ");
         Countdown(5);
 
         Console.Clear();
 
-        while (DateTime.Now < _time)
+        while (DateTime.Now < GetFutureTime())
         {
 
             if (_index.Count == 0)
@@ -58,10 +57,12 @@ public class ReflectionActivity : Acticity
             }
 
             _prompt = _rdm.Next(0, _index.Count);
-            Console.Write($"\n {_questions[_index[_prompt]]}");
-            _index.RemoveAt(_prompt);
 
+            Console.Write($"{_questions[_index[_prompt]]}");
             Loading();
+            Console.WriteLine("");
+
+            _index.RemoveAt(_prompt);
         }
 
         End();
