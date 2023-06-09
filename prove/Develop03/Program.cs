@@ -47,7 +47,7 @@ class Program
             }
             else
             {
-                System.Console.WriteLine("invalid input, try again.");
+                Console.WriteLine("invalid input, try again.");
             }
 
         }
