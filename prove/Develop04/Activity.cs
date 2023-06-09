@@ -3,10 +3,10 @@ public class Acticity
     private string _name = "";
     private string _description = "";
     private string _startMsg = "";
-    private string _congrats = "\nWell Done!";
+    private string _congrats = "";
     private string _duration = "";
     private string _endMsg = "";
-
+    private DateTime _startTime = new DateTime();
     private DateTime _futureTime = new DateTime();
 
     public Acticity(string name, string description)
@@ -26,13 +26,11 @@ public class Acticity
     }
     public string GetStartMsg()
     {
-        _startMsg = $"Welcome to the {GetName()} activity!\n";
         return _startMsg;
     }
 
     public string GetEndMsg()
     {
-        _endMsg = $"\nYou've participated in the {GetName()} activity for {GetDuration()} seconds.";
         return _endMsg;
     }
 
@@ -46,18 +44,40 @@ public class Acticity
         return _congrats;
     }
 
-    public DateTime GetFutureTime(){
+    public DateTime GetStartTime()
+    {
+        return _startTime;
+    }
 
-        DateTime startTime = DateTime.Now;
-        _futureTime = startTime.AddSeconds(int.Parse(GetDuration()));
+    public DateTime GetFutureTime(){
         return _futureTime;
     }
 
-    public void SetDuration()
+    public void SetStartMsg( string startMsg) {
+        _startMsg = startMsg;
+    }
+
+    public void SetCongrats(string congrats)
     {
-        Console.Write("\nhow long, in seconds, would you like this activity to last? ");
-        string duration = Console.ReadLine();
+        _congrats = congrats;
+    }
+
+    public void SetEndMsg(string endMsg){
+        _endMsg = endMsg;
+    }
+
+    public void SetDuration(string duration)
+    {
         _duration = duration;
+    }
+
+    public void SetStartime(DateTime startTime)
+    {
+        _startTime = startTime;
+    }
+
+    public void SetFutureTime(DateTime time){
+        _futureTime = time.AddSeconds(int.Parse(GetDuration()));
     }
 
     public void Loading()
@@ -84,12 +104,14 @@ public class Acticity
 
     public DateTime Start()
     {
+        SetStartMsg($"Welcome to the {GetName()} activity!");
         Console.Clear();
-        Console.WriteLine(GetStartMsg());
-        Console.WriteLine(GetDescription());
+        Console.WriteLine($"{GetStartMsg()}");
+        Console.WriteLine($"{GetDescription()}");
 
-
-        SetDuration();
+        Console.Write("\nhow long, in seconds, would you like this activity to last? ");
+        string duration = Console.ReadLine();
+        SetDuration(duration);
 
         Console.Clear();
 
@@ -98,6 +120,8 @@ public class Acticity
 
         Console.Clear();
 
+        SetStartime(DateTime.Now);
+        SetFutureTime(GetStartTime());
         DateTime futureTime = GetFutureTime();
 
         return futureTime;
@@ -105,9 +129,13 @@ public class Acticity
 
     public void End()
     {
-        Console.WriteLine(GetCongrats());
+        SetCongrats($"Well done!");
+        SetEndMsg($"You've participated in the {GetName()} activity for {GetDuration()} seconds.");
+
+        Console.WriteLine($"\n{GetCongrats()}");
         Loading();
-        Console.WriteLine(GetEndMsg());
+
+        Console.WriteLine($"\n{GetEndMsg()}");
         Loading();
     }
 
