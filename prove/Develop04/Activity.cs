@@ -7,6 +7,8 @@ public class Acticity
     private string _duration = "";
     private string _endMsg = "";
 
+    private DateTime _futureTime = new DateTime();
+
     public Acticity(string name, string description)
     {
         _name = name;
@@ -44,6 +46,13 @@ public class Acticity
         return _congrats;
     }
 
+    public DateTime GetFutureTime(){
+
+        DateTime startTime = DateTime.Now;
+        _futureTime = startTime.AddSeconds(int.Parse(GetDuration()));
+        return _futureTime;
+    }
+
     public void SetDuration()
     {
         Console.Write("\nhow long, in seconds, would you like this activity to last? ");
@@ -60,7 +69,7 @@ public class Acticity
         spinner.Add("-");
         spinner.Add("/");
     
-        while (i != 3)
+        while (i != 2)
         {
             foreach (string line in spinner)
             {
@@ -89,8 +98,7 @@ public class Acticity
 
         Console.Clear();
 
-        DateTime startTime = DateTime.Now;
-        DateTime futureTime = startTime.AddSeconds(int.Parse(GetDuration()));
+        DateTime futureTime = GetFutureTime();
 
         return futureTime;
     }

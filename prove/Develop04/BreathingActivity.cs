@@ -6,10 +6,7 @@ public class BreathingActivity : Acticity
 
     public void Act()
     {   
-        DateTime futureTime = Start();
-        
-        
-        while (DateTime.Now < futureTime)
+        while (DateTime.Now < Start())
         {
             Console.Write("\n \nBreathe in... ");
             Countdown(4);
