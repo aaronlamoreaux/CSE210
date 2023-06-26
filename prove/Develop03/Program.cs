@@ -8,7 +8,7 @@ class Program
         bool exit = false;
         bool hidden = false;
 
-        Mastery mastery = new Mastery(); 
+        Mastery mastery = new Mastery();
 
         System.Console.WriteLine("please chose a Book of Mormon scripture mastery to memorize (0-27)");
 
@@ -29,10 +29,10 @@ class Program
         while (exit == false)
         {
             hidden = words.GetHidden();
-            
+
             scripture.Display();
             Console.WriteLine("");
-            Console.WriteLine("to contiune press 'enter' or type 'quit' to quit");
+            Console.WriteLine("to continue press 'enter' or type 'quit' to quit");
             Console.Write("> ");
             string input = Console.ReadLine();
 
