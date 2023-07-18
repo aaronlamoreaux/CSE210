@@ -40,12 +40,4 @@ public class Running : Activity
             return GetSpeed();
         }
     }
-
-    public override string Summary()
-    {
-        double distance = Math.Round(Distance(), 1);
-        double speed = Math.Round(Speed(), 1);
-        double pace = Math.Round(Pace(), 1);
-        return $"{GetDate().ToString("MM/dd/yyyy")} {GetActivityType()} ({GetDuration()})- Distance {distance} km, Speed {speed} kph, Pace {pace} min per km";
-    }
 }
